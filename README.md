@@ -20,7 +20,7 @@ cd api_yamdb
  
 Создаем и активируем виртуальное окружение: 
 ```bash 
-python3 -m venv venv 
+python3 -m venv venv
 source /venv/bin/activate (source /venv/Scripts/activate - для Windows) 
 python -m pip install --upgrade pip 
 ``` 
