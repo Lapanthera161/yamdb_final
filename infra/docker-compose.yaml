@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
   web:
-    image: lapanthera161/yamdb_final:latest
+    image: lapanthera161/yamdb_final_web:latest
     restart: always
     volumes:
       - static_value:/app/api_yamdb/static/
