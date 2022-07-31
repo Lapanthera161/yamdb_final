@@ -78,6 +78,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            sudo docker pull lapanthera161/yamdb_final_web
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
