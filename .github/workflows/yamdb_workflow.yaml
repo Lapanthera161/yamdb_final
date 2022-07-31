@@ -55,7 +55,7 @@ jobs:
         with:
           push: true
           context: ./api_yamdb/
-          tags: ${{ secrets.DOCKER_USERNAME }}/yamdb_final_web:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/yamdb_final:latest
       - name: Send message if build_and_push_to_docker_hub failed
         if: ${{ failure() }}
         uses: appleboy/telegram-action@master
@@ -78,11 +78,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull lapanthera161/yamdb_final_web
-            sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 lapanthera161/yamdb_final_web
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb_final
             sudo docker-compose stop
             sudo docker-compose rm web
+            rm .env
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
