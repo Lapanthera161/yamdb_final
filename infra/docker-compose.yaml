@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.7'
 
 services:
   db:
@@ -7,34 +7,32 @@ services:
       - /var/lib/postgresql/data/
     env_file:
       - ./.env
+
   web:
-    image: lapanthera161/yamdb_final_web:latest
+    image: lapanthera161/api_yamdb:latest
     restart: always
     volumes:
-      - static_value:/app/api_yamdb/static/
-      - media_value:/app/api_yamdb/media/
+      - static_value:/app/static/
+      - media_value:/app/media/
     depends_on:
       - db
     env_file:
       - ./.env
 
-
   nginx:
     image: nginx:1.21.3-alpine
-
     ports:
       - "80:80"
 
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-
       - static_value:/var/html/static/
-
       - media_value:/var/html/media/
+      - ../docs/:/app/docs/
 
     depends_on:
       - web
 
-volumes: 
+volumes:
   static_value:
   media_value:
