@@ -1,6 +1,9 @@
 name: Django-app workflow
 
-on: [push]
+on:
+      push:
+        branches:
+          - master
 
 jobs:
   tests:
@@ -68,10 +71,6 @@ jobs:
   deploy:
     name: Deploy    
     runs-on: ubuntu-latest
-    on:
-      push:
-        branches:
-          - master
     needs: build_and_push_to_docker_hub
     steps:
       - name: Executing remote ssh commands to deploy
