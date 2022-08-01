@@ -10,8 +10,8 @@ REST API проект для сервиса YaMDb — сбор отзывов о
 Произведения делятся на категории: «Книги», «Фильмы», «Музыка». 
 Список категорий  может быть расширен. 
 ## Как запустить проект: 
-Все описанное ниже относится к ОС Linux. 
-Клонируем репозиторий и и переходим в него: 
+- Все описанное ниже относится к ОС Linux. 
+- Клонируем репозиторий и и переходим в него: 
 ```bash 
 git clone git@github.com:lapanthera161/yamdb_final.git
 cd yamdb_final 
@@ -60,7 +60,7 @@ docker-compose exec web python manage.py collectstatic --no-input
 
 Создаем дамп базы данных (нет в текущем репозитории): 
 ```bash 
-docker-compose exec web python manage.py dumpdata > dumpPostrgeSQL.json 
+docker-compose exec web python manage.py dumpdata > fixtures.json 
 ``` 
 
 Останавливаем контейнеры: 
